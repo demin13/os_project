@@ -1,5 +1,7 @@
 #include<stdio.h>
-void 
+void random_select(){
+	return;
+}
 int main(){
 	printf("hello world");
 }

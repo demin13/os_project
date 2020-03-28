@@ -18,7 +18,7 @@ int search(int array[],int keys,int leng){
 	return t;
 }
 //deletion of any index from an integer array O(n^2)
-void del_i(int arr[],int ind,int len)
+void delete_i(int arr[],int ind,int len)
 {
 	int p,o;
 	for(p=0;p<len;p++)
@@ -35,7 +35,7 @@ void del_i(int arr[],int ind,int len)
 	}
 }
 //deletion of any index from an character array O(n^2)
-void del_c(char arr[],int ind,int len)
+void delete_c(char arr[],int ind,int len)
 {
 	int p,o;
 	for(p=0;p<len;p++)
@@ -86,14 +86,14 @@ int main(){
 		n_bill[k]=key;
 		index=search(n_gifts,key,(sizeof(n_gifts)/4));
 		order_billed[k]=n_student[index];
-		del_i(n_gifts,index,(sizeof(n_gifts)/4));
-		del_c(n_student,index,(strlen(n_student)));
+		delete_i(n_gifts,index,(sizeof(n_gifts)/4));
+		delete_c(n_student,index,(strlen(n_student)));
 		
 	}
 	printf("\nAt billing counter first preference will be given to those student those are\n");
 	printf("having maximum number of gifts and if equal then on FCFS basis:-\n\n");
 	for(i=0;i<10;i++)
 	{
-		printf("%d : %c\n",n_bill[i],order_billed[i]);
+		printf("billing of student %c as he picked %d gifts.\n",order_billed[i],n_bill[i]);
 	}
 } 

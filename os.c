@@ -4,20 +4,20 @@
 #include<time.h>
 #include<string.h>
 
-int search(int ar[],int ki,int leng){
-	int ri,ro;
-	for(ri=0;ri<leng;ri++)
+//searching algorithm Big-O(n)
+int search(int array[],int keys,int leng){
+	int r,t;
+	for(r=0;r<leng;r++)
 	{
-		if(ki==ar[ri])
+		if(keys==array[r])
 		{
-			ro=ri;
+			t=r;
 			break;
 		}
 	}
-	return ro;
+	return t;
 }
-
-
+//deletion of any index from an integer array O(n^2)
 void del_i(int arr[],int ind,int len)
 {
 	int p,o;
@@ -31,13 +31,10 @@ void del_i(int arr[],int ind,int len)
 		  }
 	  	len=len-1;
 	  	break;
-	    }
-			
+	    }		
 	}
-	
 }
-
-
+//deletion of any index from an character array O(n^2)
 void del_c(char arr[],int ind,int len)
 {
 	int p,o;
@@ -51,21 +48,18 @@ void del_c(char arr[],int ind,int len)
 		  }
 	  	len=len-1;
 	  	break;
-	    }
-			
+	    }		
 	}
-	
 }
 
-
 int main(){
-	int i,j,n=20;
+	int i,j;
 	time_t t;
 	srand(time(&t));     //uses of srand because every time random number will differ
 	char n_student[]={'a','b','c','d','e','f','g','h','i','j'};
-	int n_shops[n];
+	int n_shops[20];
 	int n_gifts[10];
-	for(i=0;i<10;i++)
+	for(i=0;i<10;i++)    //O(n)
 	{
 		n_shops[i]=rand()%50;
 		n_gifts[i]=rand()%30;
@@ -96,7 +90,8 @@ int main(){
 		del_c(n_student,index,(strlen(n_student)));
 		
 	}
-	printf("\nAt billing counter first preference will be given to those student whom have maximum number of gifts and if equal then on FCFS basis:-\n\n");
+	printf("\nAt billing counter first preference will be given to those student those are\n");
+	printf("having maximum number of gifts and if equal then on FCFS basis:-\n\n");
 	for(i=0;i<10;i++)
 	{
 		printf("%d : %c\n",n_bill[i],order_billed[i]);

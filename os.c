@@ -2,6 +2,7 @@
 #include<conio.h>
 #include<stdlib.h>
 #include<time.h>
+#include<string.h>
 
 int search(int ar[],int ki,int leng){
 	int ri,ro;
@@ -17,7 +18,7 @@ int search(int ar[],int ki,int leng){
 }
 
 
-void del(int arr[],int ind,int len)
+void del_i(int arr[],int ind,int len)
 {
 	int p,o;
 	for(p=0;p<len;p++)
@@ -35,6 +36,28 @@ void del(int arr[],int ind,int len)
 	}
 	
 }
+
+
+void del_c(char arr[],int ind,int len)
+{
+	int p,o;
+	for(p=0;p<len;p++)
+	{
+	  if(p==ind)
+	  {
+	  	for(o=p;o<len;o++)
+	  	{
+	  		arr[o]=arr[o+1];
+		  }
+	  	len=len-1;
+	  	break;
+	    }
+			
+	}
+	
+}
+
+
 int main(){
 	int i,j,n=20;
 	time_t t;
@@ -45,15 +68,17 @@ int main(){
 	for(i=0;i<10;i++)
 	{
 		n_shops[i]=rand()%50;
-		n_gifts[i]=rand()%20;
+		n_gifts[i]=rand()%30;
 	}
+	printf("No. of gifts picked by which student and from which shop no :-\n\n");
 	for(j=0;j<10;j++)
 	{
 		printf("No of gifts picked by %c from shop no %d =  %d\n",n_student[j],n_shops[j],n_gifts[j]);
 	}
-	//billing counter
+	//At billing counter
 	int k,l,index=0;
 	int n_bill[10];
+	int order_billed[10];
 	for(k=0;k<10;k++)
 	{
 		int key=0;
@@ -62,17 +87,18 @@ int main(){
 			if(n_gifts[l]>=key)
 			{
 				key=n_gifts[l];
-				
-		    }
-			
+		    }	
 		}
 		n_bill[k]=key;
 		index=search(n_gifts,key,(sizeof(n_gifts)/4));
-		del(n_gifts,index,(sizeof(n_gifts)/4));
-		printf("%d : %c\n",index,n_student[index]);
+		order_billed[k]=n_student[index];
+		del_i(n_gifts,index,(sizeof(n_gifts)/4));
+		del_c(n_student,index,(strlen(n_student)));
+		
 	}
+	printf("\nAt billing counter first preference will be given to those student whom have maximum number of gifts and if equal then on FCFS basis:-\n\n");
 	for(i=0;i<10;i++)
 	{
-		printf("%d\n",n_bill[i]);
+		printf("%d : %c\n",n_bill[i],order_billed[i]);
 	}
 } 

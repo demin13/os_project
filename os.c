@@ -67,6 +67,7 @@ int main(){
 	printf("No. of gifts picked by which student and from which shop no :-\n\n");
 	for(j=0;j<10;j++)
 	{
+		Sleep(1000);
 		printf("No of gifts picked by %c from shop no %d =  %d\n",n_student[j],n_shops[j],n_gifts[j]);
 	}
 	//At billing counter
@@ -94,6 +95,7 @@ int main(){
 	printf("having maximum number of gifts and if equal then on FCFS basis:-\n\n");
 	for(i=0;i<10;i++)
 	{
+		Sleep(1000);
 		printf("billing of student %c as he picked %d gifts.\n",order_billed[i],n_bill[i]);
 	}
 } 
